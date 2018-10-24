@@ -3,24 +3,26 @@ require 'bookmark'
 describe Bookmark do
   describe '.all' do
     it 'shows all bookmarks' do
-      Bookmark.create('http://www.makersacademy.com')
-      Bookmark.create('http://www.destroyallsoftware.com')
-      Bookmark.create('http://www.google.com')
+      Bookmark.create('http://www.makersacademy.com', 'Makers Academy')
+      Bookmark.create('http://www.destroyallsoftware.com', 'Destroy All Software')
+      Bookmark.create('http://www.google.com', 'Google')
 
 
-      bookmarks = Bookmark.all
+      bookmarks = Bookmark.all.map { |bookmark| bookmark['title'] }
 
-      expect(bookmarks).to include('http://www.makersacademy.com')
-      expect(bookmarks).to include('http://www.destroyallsoftware.com')
-      expect(bookmarks).to include('http://www.google.com')
+      expect(bookmarks).to include('Makers Academy')
+      expect(bookmarks).to include('Destroy All Software')
+      expect(bookmarks).to include('Google')
     end
   end
-  
+
   describe '.create' do
   it 'creates a new bookmark' do
-    Bookmark.create('http://www.testbookmark.com')
+    Bookmark.create('http://www.testbookmark.com', 'Test Bookmark')
 
-    expect(Bookmark.all).to include 'http://www.testbookmark.com'
+    bookmarks = Bookmark.all.map { |bookmark| bookmark['title'] }
+
+    expect(bookmarks).to include 'Test Bookmark'
   end
 end
 end
