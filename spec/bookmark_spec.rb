@@ -3,9 +3,9 @@ require 'bookmark'
 describe Bookmark do
   describe '.all' do
     it 'shows all bookmarks' do
-      Bookmark.create('http://www.makersacademy.com', 'Makers Academy')
-      Bookmark.create('http://www.destroyallsoftware.com', 'Destroy All Software')
-      Bookmark.create('http://www.google.com', 'Google')
+      Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+      Bookmark.create(url: 'http://www.destroyallsoftware.com', title: 'Destroy All Software')
+      Bookmark.create(url: 'http://www.google.com', title: 'Google')
 
 
       bookmarks = Bookmark.all.map { |bookmark| bookmark['title'] }
@@ -18,7 +18,7 @@ describe Bookmark do
 
   describe '.create' do
   it 'creates a new bookmark' do
-    Bookmark.create('http://www.testbookmark.com', 'Test Bookmark')
+    Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
 
     bookmarks = Bookmark.all.map { |bookmark| bookmark['title'] }
 

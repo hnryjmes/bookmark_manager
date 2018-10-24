@@ -5,6 +5,6 @@ feature 'Adding bookmarks' do
     fill_in('url', with: 'http://www.tumblr.com')
     fill_in('title', with: 'Tumblr')
     click_button('Submit')
-    expect(page).to have_content('Tumblr')
+    expect(page).to have_link('Tumblr', href: 'http://www.tumblr.com')
   end
 end
