@@ -2,6 +2,16 @@ require 'bookmark'
 require 'database_helpers'
 
 describe Bookmark do
+  describe '.delete' do
+    it 'deletes the given bookmark' do
+      bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+
+      Bookmark.delete(id: bookmark.id)
+
+      expect(Bookmark.all.length).to eq 0
+    end
+  end
+
   describe '.all' do
     it 'returns a list of bookmarks' do
       # Add the test data
