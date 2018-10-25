@@ -1,20 +1,21 @@
 require 'sinatra/base'
 require_relative './lib/bookmark'
+require_relative './database_connection_setup.rb'
 
 class BookmarkManager < Sinatra::Base
   enable :sessions, :method_override
 
   get '/' do
-    '<a href="/bookmarks">Bookmark Manager 🔖</a>'
+    '<a href="/bookmarks">Bookmark Manager🔖</a>'
   end
 
   get '/bookmarks' do
     @bookmarks = Bookmark.all
-    erb :"bookmarks/index"
+    erb :'bookmarks/index'
   end
 
   get '/bookmarks/new' do
-    erb :"bookmarks/new"
+    erb :'bookmarks/new'
   end
 
   post '/bookmarks' do
@@ -32,10 +33,9 @@ class BookmarkManager < Sinatra::Base
     erb :"bookmarks/edit"
   end
 
-
   patch '/bookmarks/:id' do
     Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
-    redirect '/bookmarks'
+    redirect('/bookmarks')
   end
 
   run! if app_file == $0
