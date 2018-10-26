@@ -9,7 +9,7 @@ class BookmarkManager < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    '<a href="/bookmarks">Bookmark Manager🔖</a>'
+    '<a href="/bookmarks">Bookmark Manager🔖</a><br><a href="/bookmarks/new">New</a>'
   end
 
   get '/bookmarks' do
